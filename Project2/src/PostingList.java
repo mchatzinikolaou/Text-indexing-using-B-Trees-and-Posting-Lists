@@ -21,8 +21,6 @@ public class PostingList {
 			System.out.println();
 	}
 	
-	
-	
 	/*
 	 * Inserts the tuple at the said index. 
 	 * 
@@ -52,15 +50,10 @@ public class PostingList {
 		return result;
 	}
 	
-	
 	public Tuple[] retrieveWords(int index) throws ClassNotFoundException, IOException{
 		Posting fetch=holder.readFromFile(index);
-		
-		
 		return fetch.returnLocations();
 	}
-	
-	
 	
 	public int calculatePageSize(int PAGE_SIZE) throws IOException, ClassNotFoundException{
 		
@@ -79,6 +72,5 @@ public class PostingList {
 		File delet_this= new File("test.temp");
 		delet_this.delete();
 		return size;
-}
-	
+	}
 }
