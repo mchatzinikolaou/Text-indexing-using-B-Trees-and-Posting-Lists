@@ -12,7 +12,6 @@ class ReadFromAsciiFile {
 	
 	ArrayList<Tuple> results ;
 	
-	
 	public ReadFromAsciiFile(String filename) throws IOException
 	{
 		File file = new File(filename);
@@ -23,7 +22,6 @@ class ReadFromAsciiFile {
 		int total_byte_count=0;
 		int fromIndex;
 		results = new ArrayList<Tuple>(); //results (?)
-		
 		
 		while( (line = br.readLine())!= null ){
 			fromIndex=0;
@@ -46,9 +44,7 @@ class ReadFromAsciiFile {
 		}
 		br.close();
 	
-}
-	
-	
+	}
 	
 	public Tuple[] getResults(){
 		return results.toArray(new Tuple[results.size()]);
