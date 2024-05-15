@@ -15,8 +15,6 @@ public class main {
 	public static int BT_DiskAccesses=0;
 	public static int PL_DiskAccesses=0;
 	
-	
-	
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 		
 
@@ -28,8 +26,6 @@ public class main {
 		
 		//Text file names.
 		String[] deaultNames={"Kennedy.txt","MartinLutherKing.txt","Obama.txt"}; 
-		
-		
 		
 		Scanner input= new Scanner(System.in);
 		int selection=0;
@@ -99,7 +95,6 @@ public class main {
 		
 		System.out.println("Dictionary file: \""+DictName+"\"");
 		System.out.println("Index file: \""+IndName+"\"");
-	
 	}
 	
 	/*
@@ -110,8 +105,6 @@ public class main {
 		int TotalWords=0;
 		//Scan each file in the list.
 		for(int i=0;i<fileNames.length;i++){
-	
-				
 				System.out.println("\nScanning file \""+fileNames[i]+"\".");
 				System.out.print("Scanning ");
 				Tuple[] words= new ReadFromAsciiFile(fileNames[i]).getResults();
@@ -154,7 +147,6 @@ public class main {
 		//reset the counters.
 		main.BT_DiskAccesses=0;
 		main.PL_DiskAccesses=0;
-		
 	}
 	
 	/*
@@ -191,10 +183,6 @@ public class main {
 		main.BT_DiskAccesses=0;
 		main.PL_DiskAccesses=0;
 	}
-	
-	
-	
-	
 	
 	/*
 	 * Returns the position ,in a node, of a known reference in the index file.
