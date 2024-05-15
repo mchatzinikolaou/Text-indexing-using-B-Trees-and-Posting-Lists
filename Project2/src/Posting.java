@@ -8,13 +8,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
-
-
-
-
 public class Posting implements Serializable{
-	
 	
 	private static final long serialVersionUID = 643491977166456221L;
 	String[] text_name;
@@ -47,8 +41,6 @@ public class Posting implements Serializable{
 	}
 	
 	public Posting() {}
-
-
 		//Adds a pair of index+ file location.
 		public int insertKey(Tuple toBeInserted,int current_id) throws ClassNotFoundException, IOException{
 			//If the page is not full , enter the entry and return the id.
@@ -64,7 +56,6 @@ public class Posting implements Serializable{
 					Posting overflow=new Posting(filename,current_id++, PAGE_SIZE, MAX_POSTS);
 					current_id= overflow.insertKey(toBeInserted, current_id);
 					this.writeToFile();
-					
 				//If there already exists an overflow page.
 				}else{
 					Posting overflow=this.readFromFile(ovf_page);
@@ -75,15 +66,11 @@ public class Posting implements Serializable{
 
 			return current_id; 
 		}
-	
 		
 		private boolean isFull() {
 			return (current_size==MAX_POSTS);
 		}
-
-		
-		
-		
+	
 		public Tuple[] returnLocations() throws ClassNotFoundException, IOException{
 			
 			Posting retrieve=this;
@@ -94,13 +81,10 @@ public class Posting implements Serializable{
 				for(int i=0;i<retrieve.current_size;i++){
 					result[i]=new Tuple();
 				}
-				
 					for(int i=0;i<retrieve.current_size;i++){
 						result[i].position=retrieve.location_in_text[i];
 						result[i].file=retrieve.text_name[i];
 					}
-
-				
 				results.ensureCapacity(results.size()+result.length);
 				results.addAll(Arrays.asList(result));
 				
@@ -111,11 +95,8 @@ public class Posting implements Serializable{
 					retrieve=retrieve.readFromFile(retrieve.ovf_page);
 				}
 			}while(true);
-			
-		
 			return results.toArray(new Tuple[results.size()]);
 		}
-		
 		
 	//Could be changed to generic or object, since its being used so frequently.
 	public Posting readFromFile(int nodeID)throws IOException, ClassNotFoundException{
@@ -145,9 +126,8 @@ public class Posting implements Serializable{
         byte[] buf = bos.toByteArray();
         
         System.arraycopy( buf, 0, DataPage, 0, buf.length);
+		
         //Write disk file.
-        
-        
 		RandomAccessFile myFile = new RandomAccessFile(filename,"rw");
 		myFile.seek(ID*PAGE_SIZE);
 		myFile.write(DataPage);
@@ -157,5 +137,4 @@ public class Posting implements Serializable{
         out.close();
         main.PL_DiskAccesses++;
 	}
-	
 }
